@@ -45,6 +45,15 @@ services:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
+    adminer:
+        image: adminer
+        restart: always
+        environment:
+            - ADMINER_DEFAULT_SERVER=mysql
+        ports:
+            - 8080:8080
+        depends_on:
+            - mysql
     redis:
         image: 'redis:alpine'
         ports:
