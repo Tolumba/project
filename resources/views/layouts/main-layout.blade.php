@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="mt-5 mb-6 text-center">@yield('title')</h1>
+    <h1 class="mt-5 mb-4 text-center">@yield('title')</h1>
     @yield('content')
 </div>
 <script src="/js/bootstrap.min.js"></script>
