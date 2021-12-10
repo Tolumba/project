@@ -17,12 +17,25 @@ class BlogController extends Controller
         ]);
     }
 
-    public function getPostsByCategory($slug){
+    public function getPostsByCategory($slug_category){
         $categories = Category::orderBy('title')->get();
-        $current_category = Category::where('slug',$slug)->first();
+        $current_category = Category::where('slug',$slug_category)->first();
         return view('pages.index', [
-            'posts' => $current_category->posts,
+            'posts' => $current_category->posts()->paginate(3),
             'categories' => $categories,
         ]);
     }
+
+    public function getPost($slug_category, $slug_post){
+        $post = Post::where('slug', $slug_post)->first();
+        $categories = Category::orderBy('title')->get();
+
+        return view('pages.show-post',[
+            'post' => $post,
+            'categories' => $categories,
+            'slug_category' => $slug_category
+        ]);
+
+    }
+
 }
