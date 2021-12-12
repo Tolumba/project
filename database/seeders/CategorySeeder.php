@@ -14,10 +14,10 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++){
+        for ($i = 0; $i < 10; $i++) {
             DB::table('categories')->insert([
-                'title' => 'Category '.$i,
-                'slug' => 'category-'.$i,
+                'title' => 'Category ' . $i,
+                'slug' => 'category-' . $i,
             ]);
         }
     }
